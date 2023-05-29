@@ -34,17 +34,25 @@ function App() {
     });
   };
   return (
-    <div className="w-screen h-screen bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-8 overflow-auto overflow-x-hidden">
+    <div className="w-screen h-screen bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-8 overflow-auto overflow-x-hidden flex flex-col md:flex-row align-middle gap-4">
       <div className="bg-white/30 to-transparent p-4 w-fit">
         <h2 className="font-bold text-5xl font-mono">People list</h2>
       </div>
-      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-        <SortableContext items={people} strategy={verticalListSortingStrategy}>
-          {people.map((person) => (
-            <Person key={person.id} person={person} />
-          ))}
-        </SortableContext>
-      </DndContext>
+      <div className="flex flex-col gap-4 w-full overflow-y-scroll overflow-x-hidden">
+        <DndContext
+          collisionDetection={closestCenter}
+          onDragEnd={handleDragEnd}
+        >
+          <SortableContext
+            items={people}
+            strategy={verticalListSortingStrategy}
+          >
+            {people.map((person) => (
+              <Person key={person.id} person={person} />
+            ))}
+          </SortableContext>
+        </DndContext>
+      </div>
     </div>
   );
 }

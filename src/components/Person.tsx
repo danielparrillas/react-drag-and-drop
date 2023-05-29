@@ -20,7 +20,7 @@ export default function Person({ person }: PersonProps) {
       {...attributes}
       {...listeners}
       ref={setNodeRef}
-      className="bg-white/40 p-4 rounded-md shadow-md m-4"
+      className="bg-white/40 p-4 rounded-md shadow-md"
     >
       <h4 className="font-bold">{person.name}</h4>
       <h4>{person.username}</h4>
