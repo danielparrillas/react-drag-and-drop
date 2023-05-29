@@ -26,16 +26,12 @@ function App() {
 
   const handleDragEnd = (e: DragEndEvent) => {
     const { active, over } = e;
-    // console.log(active); //👀
-    // console.log(over); //👀
 
-    const oldIndex = people.findIndex((person) => person.id === active.id);
-    if (!!over?.id) {
-      const newIndex = people.findIndex((person) => person.id === over.id);
-      const newOrder = arrayMove(people, oldIndex, newIndex);
-      // console.log(newOrder); //👀
-      setPeople(newOrder);
-    }
+    setPeople((people) => {
+      const oldIndex = people.findIndex((person) => person.id === active.id);
+      const newIndex = people.findIndex((person) => person.id === over?.id);
+      return arrayMove(people, oldIndex, newIndex);
+    });
   };
   return (
     <div className="w-screen h-screen bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-8 overflow-auto overflow-x-hidden">
